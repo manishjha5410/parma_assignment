@@ -1,0 +1,38 @@
+<h1 class="text-5xl text-center font-normal leading-normal mt-0 mb-2">
+  Person Data
+</h1>
+
+<div class="flex flex-col w-fit	m-auto mb-5">
+  <div class="-m-1.5 overflow-x-auto">
+    <div class="p-1.5 min-w-full inline-block align-middle">
+      <div class="border rounded-lg overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th scope="col" class="px-6 py-3 text-xs text-center font-medium text-gray-500 uppercase">id</th>
+              <th scope="col" class="px-6 py-3 text-xs text-center font-medium text-gray-500 uppercase">body</th>
+              <th scope="col" class="px-6 py-3 text-xs text-center font-medium text-gray-500 uppercase">datetime</th>
+              <th scope="col" class="px-6 py-3 text-xs text-center font-medium text-gray-500 uppercase">relationship_id</th>
+              <th scope="col" class="px-6 py-3 text-xs text-center font-medium text-gray-500 uppercase">relationship_name</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% @body.each do |data| %>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-center font-medium text-gray-800"><%= data['id'] %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-gray-800"><%= data['body'] %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-gray-800"><%= data['datetime'] %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-gray-800"><%= data['relationship_ids'][0][0] %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-gray-800"><%= data['relationship_ids'][0][1] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="m-auto mb-5 flex justify-center">
+  <%= link_to "Export Csv",  export_csv_path(format: :csv), download: ['Person', Date.today].join(' '), class:"select-none rounded-lg border border-blue-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-900 transition-all hover:opacity-75" %>
+</div>

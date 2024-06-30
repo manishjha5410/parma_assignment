@@ -1,0 +1,4 @@
+id,body,datetime,relationship_id,relationship_name
+<% @body.each do |data| %>
+<%= data['id'] %>,<%= data['body'] %>,<%= data['datetime'] %>,<%= data['relationship_ids'][0][0] %>,<%= data['relationship_ids'][0][1] %>
+<% end %>
